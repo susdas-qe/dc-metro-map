@@ -74,7 +74,7 @@ router.get('/busses.json', function(req, res, next) {
   
   // rest call to get
   rest.get(WMATA_URL, {
-    query : { Lat: 42.368316, Lon: -71.157058, Radius: 32186.9 },
+    query : { Lat: 38.889931, Lon: -77.009003, Radius: 111186.9 },
     headers : { api_key: API_KEY_PLACEHOLDER }
   }).on('complete', function(data) {
     //console.log("GET on " + WMATA_URL + " data out:");
