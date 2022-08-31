@@ -5,6 +5,7 @@ A simple example of a node.js + mapbox web application configured to run on Red 
 
 ![Screenshot](./.screens/2016-03-30_2135.png?raw=true)
 
+
 ## How can I run this?
 This app is configured to be deployed and managed via OpenShift.  Which means all you'll need to do is click a few buttons and specify some settings.  [Here is a link to a lab][5] that walks you through that process.
 
