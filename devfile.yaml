@@ -22,14 +22,46 @@ components:
         uri: Dockerfile
         buildContext: .
         rootRequired: false
+  - name: outerloop-deploy
+    kubernetes:
+      inlined: |-
+        kind: Deployment
+        apiVersion: apps/v1
+        metadata:
+          name: my-nodejs
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: nodejs-app
+          template:
+            metadata:
+              labels:
+                app: nodejs-app
+            spec:
+              containers:
+                - name: my-nodejs
+                  image: nodejs-image:latest
+                  ports:
+                    - name: http
+                      containerPort: 3001
+                      protocol: TCP
+                  resources:
+                    limits:
+                      memory: "1024Mi"
+                      cpu: "500m"
 commands:
   - id: build-image
     apply:
       component: outerloop-build
+  - id: deployk8s
+    apply:
+      component: outerloop-deploy
   - id: deploy
     composite:
       commands:
         - build-image
+        - deployk8s
       group:
         kind: deploy
         isDefault: true
