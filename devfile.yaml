@@ -48,8 +48,11 @@ components:
                       protocol: TCP
                   resources:
                     limits:
-                      memory: "1024Mi"
-                      cpu: "500m"
+                      memory: "512Mi"
+                      cpu: "200m"
+                    requests:
+                      memory: "128Mi"
+                      cpu: "50m"
 commands:
   - id: build-image
     apply:
